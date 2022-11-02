@@ -51,7 +51,7 @@ const ViewIdStartuppario = () => {
         </HomeButton>
 
         <Container>
-          <h2>{checkElement?.title}</h2>
+          <h1>{checkElement?.title}</h1>
           <Description>{checkElement?.description}</Description>
         </Container>
       </WrapperPage>
@@ -69,7 +69,11 @@ const Container = styled.div({
 const WrapperPage = styled.div({
   padding: "20px",
 });
-const Description = styled.h3({});
+const Description = styled.p({
+  lineHeight: "1.3",
+  fontSize: "20px",
+  textAlign: "center",
+});
 const LabelButton = styled.a({
   textDecoration: "none",
   color: "whitesmoke",

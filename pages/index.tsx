@@ -62,26 +62,19 @@ const ViewStartuppario: NextPage = () => {
           return (
             <>
               <SectionContainer style={{ zIndex: index + 1 }}>
-                <Sticky>
-                  <div>
-                    <SectionLabel>{el}</SectionLabel>
-                  </div>
-                  <hr />
-                </Sticky>
+                <SectionLabel>{el}</SectionLabel>
+                <hr />
               </SectionContainer>
-
               <WrapperTitle>
                 {jsonData.map((obj) => {
                   if (obj.sez === el)
                     return (
-                      <>
-                        <Title
-                          target={"_blank"}
-                          href={`./${obj.title.replaceAll(" ", "-")}`}
-                        >
-                          {obj.title}
-                        </Title>
-                      </>
+                      <Title
+                        target={"_blank"}
+                        href={`./${obj.title.replaceAll(" ", "-")}`}
+                      >
+                        {obj.title}
+                      </Title>
                     );
                 })}
               </WrapperTitle>
@@ -98,11 +91,12 @@ const SectionLabel = styled.h1({
   margin: 0,
   padding: "0 50px",
 });
-const SectionContainer = styled.div({
+const SectionContainer = styled.section({
   fontSize: "2rem",
   fontWeight: 900,
   position: "sticky",
   top: "240px",
+  background: "#3c3c3b",
 });
 
 const Sticky = styled.div({
