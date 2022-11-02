@@ -70,6 +70,7 @@ const ViewStartuppario: NextPage = () => {
                   if (obj.sez === el)
                     return (
                       <Title
+                        title={obj.title}
                         target={"_blank"}
                         href={`./${obj.title.replaceAll(" ", "-")}`}
                       >
@@ -96,12 +97,6 @@ const SectionContainer = styled.section({
   fontWeight: 900,
   position: "sticky",
   top: "240px",
-  background: "#3c3c3b",
-});
-
-const Sticky = styled.div({
-  fontSize: "2rem",
-  fontWeight: "900",
   background: "#3c3c3b",
 });
 

@@ -47,7 +47,9 @@ const ViewIdStartuppario = () => {
       </Head>
       <WrapperPage>
         <HomeButton>
-          <LabelButton href={"/"}>Torna alla Home </LabelButton>
+          <LabelButton title="torna alla home" href="/">
+            Torna alla Home
+          </LabelButton>
         </HomeButton>
 
         <Container>

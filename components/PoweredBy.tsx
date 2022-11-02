@@ -1,27 +1,23 @@
 import styled from "@emotion/styled";
 import Image from "next/image";
 import React from "react";
-import LogoBitRocket from "../assets/logoRocketWhite.png";
+import srcLogo from "../assets/logoRocketWhite.png";
 
-export const PoweredBy = () => {
-  return (
-    <WrapperPoweredBy
-      target={"_blank"}
-      style={{
-        textDecoration: "none",
-        color: "whitesmoke",
-        margin: "0 5px",
-        cursor: "pointer",
-      }}
-      href="https://www.bitrocket.dev"
-    >
-      <Container>
-        <Label>Powered by BitRocket.dev</Label>
-        <Image src={LogoBitRocket} alt="bitRocket" width={30} height={30} />
-      </Container>
-    </WrapperPoweredBy>
-  );
-};
+export const PoweredBy = () => (
+  <Container>
+    <Label>
+      Powered by
+      <WrapperPoweredBy
+        title="bitrocket.dev"
+        target="_blank"
+        href="https://www.bitrocket.dev"
+      >
+        BitRocket.dev
+      </WrapperPoweredBy>
+    </Label>
+    <Image src={srcLogo} alt="bitRocket.dev" width={30} height={30} />
+  </Container>
+);
 
 const Container = styled.div({
   display: "flex",
