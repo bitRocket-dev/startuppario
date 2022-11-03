@@ -1,5 +1,8 @@
+import styled from "@emotion/styled";
+import DarkModeToggle from "react-dark-mode-toggle";
+
 export const ToggleTheme = ({ theme, setTheme }: any) => {
-  const toggleTheme = () => {
+  const onChange = () => {
     theme === "Light" ? setTheme("Dark") : setTheme("Light");
     localStorage.setItem(
       "themeValue",
@@ -7,9 +10,12 @@ export const ToggleTheme = ({ theme, setTheme }: any) => {
     );
   };
 
-  return (
-    <button onClick={toggleTheme}>
-      Switch to {theme === "Light" ? "Dark" : "Light"}
-    </button>
-  );
+  return <Toggle onChange={onChange} checked={theme === "Dark"} size={50} />;
 };
+
+const Toggle = styled(DarkModeToggle)({
+  position: "fixed",
+  zIndex: "9999",
+  right: "10px",
+  top: "10px",
+});

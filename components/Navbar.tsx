@@ -1,8 +1,5 @@
 import React, { FC } from "react";
 import styled from "@emotion/styled";
-import iconRocket from "../assets/rocket.png";
-import Image from "next/image";
-import { PoweredBy } from "./PoweredBy";
 
 interface Props {
   theme: string;
@@ -24,7 +21,6 @@ export const Navbar: FC<Props> = ({ theme }) => {
         Tutti i termini chiave che devi sapere per fare bella figura (e buoni
         affari) nel mondo startup.
       </h2>
-      <PoweredBy />
     </Wrapper>
   );
 };

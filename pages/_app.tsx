@@ -3,6 +3,7 @@ import { ToggleTheme } from "../components/ToggleTheme";
 import styled from "@emotion/styled";
 import { useEffect, useState } from "react";
 import { utilityGetTheme } from "../utility/utilityGetTheme";
+import { PoweredBy } from "../components/PoweredBy";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [theme, setTheme] = useState("Light");
@@ -15,6 +16,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <ProviderTheme theme={theme}>
+        <PoweredBy theme={theme} />
         <ToggleTheme theme={theme} setTheme={setTheme} />
         <Component {...pageProps} theme={theme} />
       </ProviderTheme>

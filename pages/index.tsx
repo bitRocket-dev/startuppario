@@ -67,7 +67,7 @@ const ViewStartuppario: NextPage<Props> = ({ theme }) => {
       <div>
         {word.map((el, index) => {
           return (
-            <>
+            <div key={index}>
               <SectionContainer theme={theme} style={{ zIndex: index + 1 }}>
                 <SectionLabel>{el}</SectionLabel>
                 <hr />
@@ -106,7 +106,7 @@ const SectionContainer = styled.section(({ theme }) => ({
   fontWeight: 900,
   position: "sticky",
   top: "240px",
-  background: theme === "Light" ? "WhiteSmoke" : "#5b5b5b",
+  background: theme === "Light" ? "WhiteSmoke" : "#393838",
 }));
 
 const Title = styled.a(({ theme }) => ({

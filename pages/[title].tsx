@@ -1,6 +1,5 @@
 import styled from "@emotion/styled";
 import Head from "next/head";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import jsonData from "../json/startuppario.json";
@@ -94,6 +93,7 @@ const HomeButton = styled.button({
   border: "1px solid black",
   background: "#b82335",
   padding: "10px",
+  borderRadius: "10px",
   "&:hover": {
     background: "#cc5454",
     border: "1px solid black",
