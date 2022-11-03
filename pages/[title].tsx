@@ -32,7 +32,8 @@ const ViewIdStartuppario = () => {
         <script async src="https://cdn.ampproject.org/v0.js"></script>
         <title>Startuppario: {checkElement?.title}</title>
         <meta
-          content="Startuppario, il vocabolario delle startup. Impara tutti i termini chiave per fare bella figura e buoni affari nel mondo startup"
+          content="Startuppario, il vocabolario delle startup. 
+          Impara tutti i termini chiave per fare bella figura e buoni affari nel mondo startup"
           name="description"
         />
         <link rel="icon" href="favicon.ico" />
@@ -40,26 +41,32 @@ const ViewIdStartuppario = () => {
           rel="canonical"
           href="http://example.ampproject.org/article-metadata.html"
         />
+
         <link
           href="https://fonts.googleapis.com/css?family=Roboto:300,900"
           rel="stylesheet"
         />
       </Head>
       <WrapperPage>
-        <HomeButton>
-          <LabelButton title="torna alla home" href="/">
-            Torna alla Home
-          </LabelButton>
+        <HomeButton title="torna alla home" onClick={() => router.push("/")}>
+          <LabelButton>Torna alla Home</LabelButton>
         </HomeButton>
 
         <Container>
-          <h1>{checkElement?.title}</h1>
+          <h2>{checkElement?.title}</h2>
           <Description>{checkElement?.description}</Description>
         </Container>
       </WrapperPage>
     </>
   );
 };
+
+const WrapperPage = styled.div({
+  padding: "20px",
+  width: "100%",
+  height: "100vh",
+  overflow: "hidden",
+});
 
 const Container = styled.div({
   padding: "0 100px",
@@ -68,15 +75,14 @@ const Container = styled.div({
   alignItems: "center",
   textAlign: "center",
 });
-const WrapperPage = styled.div({
-  padding: "20px",
-});
+
 const Description = styled.p({
   lineHeight: "1.3",
   fontSize: "20px",
   textAlign: "center",
 });
-const LabelButton = styled.a({
+
+const LabelButton = styled.p({
   textDecoration: "none",
   color: "whitesmoke",
   "&:hover": {

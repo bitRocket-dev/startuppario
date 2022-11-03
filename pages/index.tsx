@@ -1,9 +1,12 @@
 import styled from "@emotion/styled";
 import type { NextPage } from "next";
 import Head from "next/head";
-
 import { Navbar } from "../components/Navbar";
 import jsonData from "../json/startuppario.json";
+interface Props {
+  theme: string;
+}
+
 interface Props {
   theme: string;
 }
@@ -60,32 +63,14 @@ const ViewStartuppario: NextPage<Props> = ({ theme }) => {
         />
       </Head>
 
-      <Navbar theme={theme} />
-      <>
+      <Navbar />
+      <div>
         {word.map((el, index) => {
           return (
-            <div key={index}>
+            <>
               <SectionContainer theme={theme} style={{ zIndex: index + 1 }}>
-                <SectionLabel>
-                  <span
-                    style={{
-                      width: "50%",
-                      margin: "0 auto",
-                      fontSize: "48px",
-                      display: "block",
-                    }}
-                  >
-                    {el}
-                  </span>
-                </SectionLabel>
-                <hr
-                  style={{
-                    backgroundColor: "#E1E1E1",
-                    height: "1px",
-                    border: "none",
-                    width: "100%",
-                  }}
-                />
+                <SectionLabel>{el}</SectionLabel>
+                <hr />
               </SectionContainer>
               <WrapperTitle style={{ width: "50%", margin: "0 auto" }}>
                 {jsonData.map((obj) => {
@@ -93,6 +78,7 @@ const ViewStartuppario: NextPage<Props> = ({ theme }) => {
                     return (
                       <Title
                         title={obj.title}
+                        theme={theme}
                         target={"_blank"}
                         href={`./${obj.title?.replaceAll(" ", "-")}`}
                       >
@@ -115,7 +101,6 @@ const SectionLabel = styled.h1({
   margin: 0,
   padding: "16px 50px 0 50px",
 });
-
 const SectionContainer = styled.section(({ theme }) => ({
   fontSize: "2rem",
   fontWeight: 900,
@@ -137,7 +122,6 @@ const Title = styled.a(({ theme }) => ({
     color: theme === "Light" ? "#429CD6" : "#CC5454",
   },
 }));
-
 const WrapperTitle = styled.div({
   display: "flex",
   flexDirection: "column",
