@@ -8,20 +8,21 @@ const ViewIdStartuppario = () => {
   const [stopLight, setStopLight] = useState(false);
   const router = useRouter();
   const { query } = useRouter();
-  const checkElement = jsonData.find(
+  const matchingData = jsonData.find(
     (el) => el.title.replaceAll(" ", "-") === query.title
   );
 
   useEffect(() => {
     if (stopLight) {
-      if (checkElement === undefined) router.push("/");
+      if (matchingData === undefined) router.push("/");
     } else setStopLight(true);
   }, [query.title]);
 
+  if (!matchingData) return;
   return (
     <>
       <Head>
-        <title>Startuppario {checkElement?.title}</title>
+        <title>Startuppario {matchingData?.title}</title>
         <meta
           name="description"
           content="Startuppario: Il vocabolario delle startup"
@@ -29,7 +30,7 @@ const ViewIdStartuppario = () => {
         <link rel="icon" href="/favicon.ico" />
         <meta charSet="utf-8" />
         <script async src="https://cdn.ampproject.org/v0.js"></script>
-        <title>Startuppario: {checkElement?.title}</title>
+        <title>Startuppario: {matchingData?.title}</title>
         <meta
           content="Startuppario, il vocabolario delle startup. 
           Impara tutti i termini chiave per fare bella figura e buoni affari nel mondo startup"
@@ -52,8 +53,8 @@ const ViewIdStartuppario = () => {
         </HomeButton>
 
         <Container>
-          <h2>{checkElement?.title}</h2>
-          <Description>{checkElement?.description}</Description>
+          <h2>{matchingData?.title}</h2>
+          <Description>{matchingData?.description}</Description>
         </Container>
       </WrapperPage>
     </>

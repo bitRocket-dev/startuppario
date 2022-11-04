@@ -3,19 +3,19 @@ import DarkModeToggle from "react-dark-mode-toggle";
 
 export const ToggleTheme = ({ theme, setTheme }: any) => {
   const onChange = () => {
-    theme === "Light" ? setTheme("Dark") : setTheme("Light");
+    theme === "light" ? setTheme("dark") : setTheme("light");
     localStorage.setItem(
-      "themeValue",
-      JSON.stringify(theme === "Light" ? "Dark" : "Light")
+      "startuppario-bitrocket-theme",
+      JSON.stringify(theme === "light" ? "dark" : "light")
     );
   };
 
-  return <Toggle onChange={onChange} checked={theme === "Dark"} size={50} />;
+  return <Toggle onChange={onChange} checked={theme === "dark"} size={50} />;
 };
 
 const Toggle = styled(DarkModeToggle)({
   position: "fixed",
-  zIndex: "9999",
+  zIndex: "27",
   right: "10px",
   top: "10px",
 });

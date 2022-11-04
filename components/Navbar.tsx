@@ -1,14 +1,12 @@
 import React, { FC } from "react";
 import styled from "@emotion/styled";
+import Image from "next/image";
+import iconRocket from "../assets/rocket.png";
 
-interface Props {
-  theme: string;
-}
-
-export const Navbar: FC<Props> = ({ theme }) => {
+export const Navbar: FC = () => {
   return (
-    <Wrapper theme={theme}>
-      <Image src={iconRocket} alt="rocket" width={116} height={116} />
+    <Wrapper>
+      <Image src={iconRocket} alt="rocket" width={80} height={80} />
       <h1
         style={{
           margin: "0",
@@ -26,9 +24,10 @@ export const Navbar: FC<Props> = ({ theme }) => {
 };
 
 const Wrapper = styled.div(({ theme }) => ({
-  zIndex: 99,
+  zIndex: 25,
   top: 0,
   position: "sticky",
+  backgroundColor: theme.navbar.background,
   width: "100%",
   height: "200px",
   display: "flex",
@@ -36,7 +35,6 @@ const Wrapper = styled.div(({ theme }) => ({
   alignItems: "center",
   justifyContent: "center",
   padding: "20px",
-  borderBottom: theme === "Light" ? "4px solid #429CD6" : "4px solid #CC5454",
-  color: theme === "Light" ? "#3c3c3b" : "WhiteSmoke",
-  background: theme === "Light" ? "white" : "#3c3c3b",
+  borderBottom: theme.navbar.borderBottom,
+  color: theme.text,
 }));

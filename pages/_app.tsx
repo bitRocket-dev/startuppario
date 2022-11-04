@@ -1,36 +1,27 @@
 import type { AppProps } from "next/app";
 import { ToggleTheme } from "../components/ToggleTheme";
-import styled from "@emotion/styled";
 import { useEffect, useState } from "react";
 import { utilityGetTheme } from "../utility/utilityGetTheme";
 import { PoweredBy } from "../components/PoweredBy";
+import { ThemeProvider } from "../theme/ThemeProvider";
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const [theme, setTheme] = useState("Light");
+  const [theme, setTheme] = useState<"light" | "dark">("light");
 
   useEffect(() => {
-    const storageTheme = utilityGetTheme();
+    const storageTheme = utilityGetTheme() || "light";
     setTheme(storageTheme);
   }, []);
 
   return (
     <>
-      <ProviderTheme theme={theme}>
-        <PoweredBy theme={theme} />
+      <ThemeProvider themeSelected={theme}>
+        <PoweredBy />
         <ToggleTheme theme={theme} setTheme={setTheme} />
         <Component {...pageProps} theme={theme} />
-      </ProviderTheme>
+      </ThemeProvider>
     </>
   );
 }
-
-const ProviderTheme = styled.div(({ theme = "Light" }) => ({
-  backgroundColor: theme === "Light" ? "White" : "#3c3c3b",
-  color: theme === "Light" ? "#3c3c3b" : "White",
-  margin: "0",
-  padding: "0",
-  boxSizing: "border-box",
-  fontFamily: "Arial, Helvetica, sans-serif",
-}));
 
 export default MyApp;
