@@ -48,24 +48,31 @@ const ViewIdStartuppario = () => {
         />
       </Head>
       <WrapperPage>
-        <HomeButton title="torna alla home" onClick={() => router.push("/")}>
-          <LabelButton>Torna alla Home</LabelButton>
-        </HomeButton>
-
         <Container>
-          <h2>{matchingData?.title}</h2>
+          <ContainerTitle>{matchingData?.title}</ContainerTitle>
           <Description>{matchingData?.description}</Description>
+          <HomeButton title="torna alla home" onClick={() => router.push("/")}>
+            Torna alla Home
+          </HomeButton>
         </Container>
       </WrapperPage>
     </>
   );
 };
 
+const ContainerTitle = styled.h2({
+  margin: "0",
+});
+
 const WrapperPage = styled.div({
   padding: "20px",
   width: "100%",
   height: "100vh",
   overflow: "hidden",
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "space-around",
+  alignItems: "center",
 });
 
 const Container = styled.div({
@@ -73,33 +80,37 @@ const Container = styled.div({
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
+  justifyContent: "center",
   textAlign: "center",
+  fontSize: "32px",
+  width: "50%",
 });
 
 const Description = styled.p({
-  lineHeight: "1.3",
   fontSize: "20px",
   textAlign: "center",
+  fontWeight: "bold",
+  lineHeight: "32px",
+  margin: "50px 0",
 });
 
-const LabelButton = styled.p({
-  textDecoration: "none",
-  color: "whitesmoke",
-  "&:hover": {
-    color: "whitesmoke",
-  },
-});
 const HomeButton = styled.button({
   textDecoration: "none",
   border: "1px solid black",
   background: "#b82335",
   padding: "10px",
-  borderRadius: "10px",
+  color: "whitesmoke",
+
   "&:hover": {
     background: "#cc5454",
     border: "1px solid black",
     boxShadow: "0px 0px 12px 0px #c22727",
   },
+  fontSize: "16px",
+  borderRadius: "40px",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
 });
 
 export default ViewIdStartuppario;
