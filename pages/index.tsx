@@ -4,8 +4,11 @@ import Head from "next/head";
 import Link from "next/link";
 import { Navbar } from "../components/Navbar";
 import jsonData from "../json/startuppario.json";
+interface Props {
+  theme: string;
+}
 
-const ViewStartuppario: NextPage = () => {
+const ViewStartuppario: NextPage<Props> = ({ theme }) => {
   const word = [
     "A",
     "B",
@@ -56,16 +59,35 @@ const ViewStartuppario: NextPage = () => {
           rel="stylesheet"
         />
       </Head>
-      <Navbar />
-      <div>
+
+      <Navbar theme={theme} />
+      <>
         {word.map((el, index) => {
           return (
-            <>
-              <SectionContainer style={{ zIndex: index + 1 }}>
-                <SectionLabel>{el}</SectionLabel>
-                <hr />
+            <div key={index}>
+              <SectionContainer theme={theme} style={{ zIndex: index + 1 }}>
+                <SectionLabel>
+                  <span
+                    style={{
+                      width: "50%",
+                      margin: "0 auto",
+                      fontSize: "48px",
+                      display: "block",
+                    }}
+                  >
+                    {el}
+                  </span>
+                </SectionLabel>
+                <hr
+                  style={{
+                    backgroundColor: "#E1E1E1",
+                    height: "1px",
+                    border: "none",
+                    width: "100%",
+                  }}
+                />
               </SectionContainer>
-              <WrapperTitle>
+              <WrapperTitle style={{ width: "50%", margin: "0 auto" }}>
                 {jsonData.map((obj) => {
                   if (obj.sez === el)
                     return (
@@ -79,40 +101,43 @@ const ViewStartuppario: NextPage = () => {
                     );
                 })}
               </WrapperTitle>
-            </>
+            </div>
           );
         })}
-      </div>
+      </>
     </Container>
   );
 };
 
 const Container = styled.div({});
+
 const SectionLabel = styled.h1({
   margin: 0,
-  padding: "0 50px",
+  padding: "16px 50px 0 50px",
 });
-const SectionContainer = styled.section({
+
+const SectionContainer = styled.section(({ theme }) => ({
   fontSize: "2rem",
   fontWeight: 900,
   position: "sticky",
   top: "240px",
-  background: "#3c3c3b",
-});
+  background: theme === "Light" ? "WhiteSmoke" : "#5b5b5b",
+}));
 
-const Title = styled.a({
-  fontSize: "22px",
-  color: "whitesmoke",
+const Title = styled.a(({ theme }) => ({
+  fontSize: "24px",
+  color: theme === "Light" ? "#3c3c3b" : "WhiteSmoke",
   textDecoration: "none",
-  padding: "0 250px",
+  paddingLeft: "100px",
   width: "100%",
   margin: "30px 0",
   cursor: "pointer",
+  fontWeight: "bold",
   "&:hover": {
-    color: "#b82335",
-    boxShadow: "5px 5px 5px 0 #b82335",
+    color: theme === "Light" ? "#429CD6" : "#CC5454",
   },
-});
+}));
+
 const WrapperTitle = styled.div({
   display: "flex",
   flexDirection: "column",
