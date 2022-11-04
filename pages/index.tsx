@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import type { NextPage } from "next";
 import Head from "next/head";
-import Link from "next/link";
+
 import { Navbar } from "../components/Navbar";
 import jsonData from "../json/startuppario.json";
 
@@ -72,7 +72,7 @@ const ViewStartuppario: NextPage = () => {
                       <Title
                         title={obj.title}
                         target={"_blank"}
-                        href={`./${obj.title.replaceAll(" ", "-")}`}
+                        href={`./${obj.title?.replaceAll(" ", "-")}`}
                       >
                         {obj.title}
                       </Title>
