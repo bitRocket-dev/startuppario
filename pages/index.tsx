@@ -74,7 +74,7 @@ const ViewStartuppario: NextPage = () => {
                         target={"_blank"}
                         href={`./${obj.title.replaceAll(" ", "-")}`}
                       >
-                        {obj.title}
+                        <h3>{obj.title}</h3>
                       </Title>
                     );
                 })}
