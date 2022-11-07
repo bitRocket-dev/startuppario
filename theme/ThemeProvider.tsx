@@ -8,12 +8,13 @@ import { theme } from "./general/mapColors";
 import styled from "@emotion/styled";
 
 interface Props {
-  themeSelected: "dark" | "light";
+  themeSelected: "dark" | "light" | string;
   children: ReactNode;
 }
 
 export const ThemeProvider: FC<Props> = memo(
   ({ children, themeSelected }): JSX.Element => {
+    console.log(themeSelected);
     const { light, dark } = theme;
 
     return (

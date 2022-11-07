@@ -33,6 +33,7 @@ const ViewStartuppario: NextPage = () => {
     "Z",
   ];
 
+  if (error) return <p>{error.messages}</p>;
   return (
     <Container>
       <Head>
@@ -71,7 +72,7 @@ const ViewStartuppario: NextPage = () => {
               </WrapperSection>
             </SectionContainer>
             <WrapperTitle>
-              {data ? (
+              {data &&
                 data.map((obj: TStartup) => {
                   if (obj.sez === el)
                     return (
@@ -82,10 +83,7 @@ const ViewStartuppario: NextPage = () => {
                         {obj.title}
                       </Title>
                     );
-                })
-              ) : (
-                <p>Error</p>
-              )}
+                })}
             </WrapperTitle>
           </div>
         ))}

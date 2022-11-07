@@ -6,7 +6,7 @@ export const ToggleTheme = ({ theme, setTheme }: any) => {
     theme === "light" ? setTheme("dark") : setTheme("light");
     localStorage.setItem(
       "startuppario-bitrocket-theme",
-      JSON.stringify(theme === "light" ? "dark" : "light")
+      theme === "light" ? "dark" : "light"
     );
   };
 

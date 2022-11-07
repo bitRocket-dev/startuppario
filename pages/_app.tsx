@@ -6,7 +6,9 @@ import { PoweredBy } from "../components/PoweredBy";
 import { ThemeProvider } from "../theme/ThemeProvider";
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const [theme, setTheme] = useState<"light" | "dark">("light");
+  const [theme, setTheme] = useState<"light" | "dark" | string>(
+    "light".toString()
+  );
 
   useEffect(() => {
     const storageTheme = utilityGetTheme() || "light";
@@ -14,13 +16,11 @@ function MyApp({ Component, pageProps }: AppProps) {
   }, []);
 
   return (
-    <>
-      <ThemeProvider themeSelected={theme}>
-        <PoweredBy />
-        <ToggleTheme theme={theme} setTheme={setTheme} />
-        <Component {...pageProps} theme={theme} />
-      </ThemeProvider>
-    </>
+    <ThemeProvider themeSelected={theme}>
+      <PoweredBy />
+      <ToggleTheme theme={theme} setTheme={setTheme} />
+      <Component {...pageProps} theme={theme} />
+    </ThemeProvider>
   );
 }
 

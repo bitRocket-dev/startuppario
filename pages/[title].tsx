@@ -5,10 +5,26 @@ import { useRouter } from "next/router";
 import useSWR from "swr";
 
 const ViewIdStartuppario = () => {
-  const fetcher = (url: string) => fetch(url).then((res) => res.json());
   const { query } = useRouter();
+
+  const fetcher = async (url: string) => {
+    if (query.title) {
+      const res = await fetch(url);
+
+      if (!res.ok) {
+        const error = "il titolo cercato non è esistente!";
+
+        throw error;
+      }
+
+      return res.json();
+    }
+  };
   const { data, error } = useSWR(`/api/dataStartup/${query.title}`, fetcher);
+
   const router = useRouter();
+
+  if (error) router.push("/");
 
   return (
     <>
