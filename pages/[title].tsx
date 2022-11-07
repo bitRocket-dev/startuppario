@@ -96,8 +96,7 @@ const Description = styled.p({
 
 const HomeButton = styled.button(({ theme }) => ({
   textDecoration: "none",
-  border: "1px solid black",
-  background: "#b82335",
+  border: "none",
   padding: "10px",
   color: "whitesmoke",
   "&:hover": {
