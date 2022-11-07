@@ -6,7 +6,9 @@ import iconRocket from "../assets/rocket.png";
 export const Navbar: FC = () => {
   return (
     <Wrapper>
-      <Image src={iconRocket} alt="rocket" width={80} height={80} />
+      <ImageSize>
+        <Image src={iconRocket} alt="rocket" />
+      </ImageSize>
       <h1
         style={{
           margin: "0",
@@ -22,6 +24,11 @@ export const Navbar: FC = () => {
     </Wrapper>
   );
 };
+
+const ImageSize = styled.div({
+  width: "80px",
+  height: "80px",
+});
 
 const Wrapper = styled.div(({ theme }) => ({
   zIndex: 25,
