@@ -26,8 +26,8 @@ const Container = styled.div(({ theme }) => ({
   fontSize: "10px",
   position: "fixed",
   zIndex: "26",
-  bottom: "10px",
-  right: "10px",
+  bottom: "20px",
+  right: "32px",
   backgroundColor: theme.background,
   boxShadow: theme.field.boxShadow,
 }));
@@ -35,8 +35,8 @@ const Label = styled.p({
   margin: "0 5px",
 });
 const WrapperPoweredBy = styled.a(({ theme }) => ({
-  textDecoration: "none",
   color: theme.text,
   margin: "0 5px",
   cursor: "pointer",
+  textDecoration: "underline",
 }));

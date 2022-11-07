@@ -16,6 +16,6 @@ export const ToggleTheme = ({ theme, setTheme }: any) => {
 const Toggle = styled(DarkModeToggle)({
   position: "fixed",
   zIndex: "27",
-  right: "10px",
-  top: "10px",
+  right: "32px",
+  top: "20px",
 });
