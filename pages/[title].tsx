@@ -1,28 +1,19 @@
+import React from "react";
 import styled from "@emotion/styled";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
-import jsonData from "../json/startuppario.json";
+import useSWR from "swr";
 
 const ViewIdStartuppario = () => {
-  const [stopLight, setStopLight] = useState(false);
-  const router = useRouter();
+  const fetcher = (url: string) => fetch(url).then((res) => res.json());
   const { query } = useRouter();
-  const matchingData = jsonData.find(
-    (el) => el.title.replaceAll(" ", "-") === query.title
-  );
+  const { data, error } = useSWR(`/api/dataStartup/${query.title}`, fetcher);
+  const router = useRouter();
 
-  useEffect(() => {
-    if (stopLight) {
-      if (matchingData === undefined) router.push("/");
-    } else setStopLight(true);
-  }, [query.title]);
-
-  if (!matchingData) return;
   return (
     <>
       <Head>
-        <title>Startuppario {matchingData?.title}</title>
+        <title>Startuppario {data?.title}</title>
         <meta
           name="description"
           content="Startuppario: Il vocabolario delle startup"
@@ -30,7 +21,7 @@ const ViewIdStartuppario = () => {
         <link rel="icon" href="/favicon.ico" />
         <meta charSet="utf-8" />
         <script async src="https://cdn.ampproject.org/v0.js"></script>
-        <title>Startuppario: {matchingData?.title}</title>
+        <title>Startuppario: {data?.title}</title>
         <meta
           content="Startuppario, il vocabolario delle startup. 
           Impara tutti i termini chiave per fare bella figura e buoni affari nel mondo startup"
@@ -49,11 +40,18 @@ const ViewIdStartuppario = () => {
       </Head>
       <WrapperPage>
         <Container>
-          <ContainerTitle>{matchingData?.title}</ContainerTitle>
-          <Description>{matchingData?.description}</Description>
-          <HomeButton title="torna alla home" onClick={() => router.push("/")}>
-            Torna alla Home
-          </HomeButton>
+          {data && (
+            <>
+              <ContainerTitle>{data.title}</ContainerTitle>
+              <Description>{data.description}</Description>
+              <HomeButton
+                title="torna alla home"
+                onClick={() => router.push("/")}
+              >
+                Torna alla Home
+              </HomeButton>
+            </>
+          )}
         </Container>
       </WrapperPage>
     </>

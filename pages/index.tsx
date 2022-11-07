@@ -1,10 +1,14 @@
 import styled from "@emotion/styled";
 import type { NextPage } from "next";
 import Head from "next/head";
+import useSWR from "swr";
 import { Navbar } from "../components/Navbar";
-import jsonData from "../json/startuppario.json";
+import { TStartup } from "../interfaces/TStartup";
 
 const ViewStartuppario: NextPage = () => {
+  const fetcher = (url: string) => fetch(url).then((res) => res.json());
+  const { data, error } = useSWR("/api/dataStartup", fetcher);
+
   const wordList = [
     "A",
     "B",
@@ -67,17 +71,21 @@ const ViewStartuppario: NextPage = () => {
               </WrapperSection>
             </SectionContainer>
             <WrapperTitle>
-              {jsonData.map((obj) => {
-                if (obj.sez === el)
-                  return (
-                    <Title
-                      title={obj.title}
-                      href={`./${obj.title.replaceAll(" ", "-")}`}
-                    >
-                      {obj.title}
-                    </Title>
-                  );
-              })}
+              {data ? (
+                data.map((obj: TStartup) => {
+                  if (obj.sez === el)
+                    return (
+                      <Title
+                        title={obj.title}
+                        href={`./${obj.title.replaceAll(" ", "-")}`}
+                      >
+                        {obj.title}
+                      </Title>
+                    );
+                })
+              ) : (
+                <p>Error</p>
+              )}
             </WrapperTitle>
           </div>
         ))}
@@ -128,8 +136,3 @@ const Divider = styled.hr({
 });
 
 export default ViewStartuppario;
-
-// <div key={index}>
-//   <SectionContainer style={{ zIndex: index + 1 }}>
-//     <SectionLabel>{el}</SectionLabel>
-//     <hr />

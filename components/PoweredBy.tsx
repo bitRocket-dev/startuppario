@@ -7,11 +7,7 @@ export const PoweredBy: FC = (): JSX.Element => (
   <Container>
     <Label>
       Powered by
-      <WrapperPoweredBy
-        title="bitrocket.dev"
-        target="_blank"
-        href="https://www.bitrocket.dev"
-      >
+      <WrapperPoweredBy title="bitrocket.dev" href="https://www.bitrocket.dev">
         BitRocket.dev
       </WrapperPoweredBy>
     </Label>
