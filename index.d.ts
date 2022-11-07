@@ -28,5 +28,11 @@ declare module "@emotion/react" {
       background: string;
       color: string;
     };
+    buttonHome: {
+      background: string;
+      backgroundHover: {
+        boxShadow: string;
+      };
+    };
   }
 }

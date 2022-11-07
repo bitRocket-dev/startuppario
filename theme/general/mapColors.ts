@@ -25,6 +25,12 @@ export const theme = {
       background: "#cfd7ff",
       color: "#4e57ef",
     },
+    buttonHome: {
+      background: "#429CD6",
+      backgroundHover: {
+        boxShadow: "0px 0px 12px 0px #49a7e4",
+      },
+    },
   },
   dark: {
     background: "#3c3c3b",
@@ -48,6 +54,12 @@ export const theme = {
     button: {
       background: "#4e57ef",
       color: "#cfd7ff",
+    },
+    buttonHome: {
+      background: "#CC5454",
+      backgroundHover: {
+        boxShadow: "0px 0px 12px 0px #c22727",
+      },
     },
   },
 };

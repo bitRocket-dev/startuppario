@@ -94,23 +94,21 @@ const Description = styled.p({
   margin: "50px 0",
 });
 
-const HomeButton = styled.button({
+const HomeButton = styled.button(({ theme }) => ({
   textDecoration: "none",
   border: "1px solid black",
   background: "#b82335",
   padding: "10px",
   color: "whitesmoke",
-
   "&:hover": {
-    background: "#cc5454",
-    border: "1px solid black",
-    boxShadow: "0px 0px 12px 0px #c22727",
+    boxShadow: theme.buttonHome.backgroundHover.boxShadow,
   },
   fontSize: "16px",
   borderRadius: "40px",
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
-});
+  backgroundColor: theme.buttonHome.background,
+}));
 
 export default ViewIdStartuppario;
