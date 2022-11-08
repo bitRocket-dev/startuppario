@@ -73,6 +73,7 @@ const ViewStartuppario: NextPage = () => {
                     <Title
                       title={obj.title}
                       href={`./${obj.title.replaceAll(" ", "-")}`}
+                      key={obj.id}
                     >
                       {obj.title}
                     </Title>
@@ -128,8 +129,3 @@ const Divider = styled.hr({
 });
 
 export default ViewStartuppario;
-
-// <div key={index}>
-//   <SectionContainer style={{ zIndex: index + 1 }}>
-//     <SectionLabel>{el}</SectionLabel>
-//     <hr />
