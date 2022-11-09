@@ -3,6 +3,7 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import { Navbar } from "../components/Navbar";
 import jsonData from "../json/startuppario.json";
+import Link from "next/link";
 
 const ViewStartuppario: NextPage = () => {
   const wordList = [
@@ -70,13 +71,18 @@ const ViewStartuppario: NextPage = () => {
               {jsonData.map((obj) => {
                 if (obj.sez === el)
                   return (
-                    <Title
+                    <Link
                       title={obj.title}
                       href={`./${obj.title.replaceAll(" ", "-")}`}
-                      key={obj.id}
+                      key={`${obj.id}-${obj.title}`}
                     >
-                      {obj.title}
-                    </Title>
+                      <TitleLink
+                        href={`./${obj.title.replaceAll(" ", "-")}`}
+                        key={obj.id}
+                      >
+                        {obj.title}
+                      </TitleLink>
+                    </Link>
                   );
               })}
             </WrapperTitle>
@@ -102,7 +108,7 @@ const SectionContainer = styled.section(({ theme }) => ({
   background: theme.field.background,
 }));
 
-const Title = styled.a(({ theme }) => ({
+const TitleLink = styled.a(({ theme }) => ({
   fontSize: "24px",
   color: theme.text,
   textDecoration: "none",
