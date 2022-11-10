@@ -1,28 +1,37 @@
 import styled from "@emotion/styled";
+import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
-import jsonData from "../json/startuppario.json";
 
-const ViewIdStartuppario = () => {
+import { utilityGetEnv } from "../utils/getEnv";
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const { title } = context.query;
+  const response = await fetch(`${utilityGetEnv()}/api/${title}`);
+  const descriptionList = await response.json();
+
+  return { props: { descriptionList } };
+};
+
+const ViewIdStartuppario = ({
+  descriptionList,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const [stopLight, setStopLight] = useState(false);
   const router = useRouter();
   const { query } = useRouter();
-  const matchingData = jsonData.find(
-    (el) => el.title.replaceAll(" ", "-") === query.title
-  );
 
   useEffect(() => {
     if (stopLight) {
-      if (matchingData === undefined) router.push("/");
+      if (descriptionList === undefined) router.push("/");
     } else setStopLight(true);
   }, [query.title]);
 
-  if (!matchingData) return;
+  if (!descriptionList) return;
   return (
     <>
       <Head>
-        <title>Startuppario {matchingData?.title}</title>
+        <title>Startuppario {descriptionList?.title}</title>
         <meta
           name="description"
           content="Startuppario: Il vocabolario delle startup"
@@ -30,7 +39,7 @@ const ViewIdStartuppario = () => {
         <link rel="icon" href="/favicon.ico" />
         <meta charSet="utf-8" />
         <script async src="https://cdn.ampproject.org/v0.js"></script>
-        <title>Startuppario: {matchingData?.title}</title>
+        <title>Startuppario: {descriptionList?.title}</title>
         <meta
           content="Startuppario, il vocabolario delle startup. 
           Impara tutti i termini chiave per fare bella figura e buoni affari nel mondo startup"
@@ -49,8 +58,8 @@ const ViewIdStartuppario = () => {
       </Head>
       <WrapperPage>
         <Container>
-          <ContainerTitle>{matchingData?.title}</ContainerTitle>
-          <Description>{matchingData?.description}</Description>
+          <ContainerTitle>{descriptionList?.title}</ContainerTitle>
+          <Description>{descriptionList?.description}</Description>
           <HomeButton title="torna alla home" onClick={() => router.push("/")}>
             Torna alla Home
           </HomeButton>
