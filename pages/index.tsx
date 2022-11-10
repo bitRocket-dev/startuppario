@@ -1,11 +1,29 @@
 import styled from "@emotion/styled";
-import type { NextPage } from "next";
+import type {
+  GetServerSideProps,
+  NextPage,
+  InferGetServerSidePropsType,
+} from "next";
 import Head from "next/head";
 import { Navbar } from "../components/Navbar";
+<<<<<<< HEAD
 import jsonData from "../json/startuppario.json";
 import Link from "next/link";
+=======
+import { TList } from "../declaration/general";
+import { utilityGetEnv } from "../utils/getEnv";
+>>>>>>> 861641e (fix(general): fixed json api)
 
-const ViewStartuppario: NextPage = () => {
+export const getServerSideProps: GetServerSideProps = async () => {
+  const response = await fetch(`${utilityGetEnv()}/api/requestTitleList`);
+  const titleList = await response.json();
+
+  return { props: { titleList } };
+};
+
+const ViewStartuppario: NextPage = ({
+  titleList,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const wordList = [
     "A",
     "B",
@@ -68,8 +86,8 @@ const ViewStartuppario: NextPage = () => {
               </WrapperSection>
             </SectionContainer>
             <WrapperTitle>
-              {jsonData.map((obj) => {
-                if (obj.sez === el)
+              {titleList.map((obj: TList) => {
+                if (obj.sez === el) {
                   return (
                     <Link
                       title={obj.title}
@@ -84,6 +102,7 @@ const ViewStartuppario: NextPage = () => {
                       </TitleLink>
                     </Link>
                   );
+                }
               })}
             </WrapperTitle>
           </div>

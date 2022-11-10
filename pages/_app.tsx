@@ -1,7 +1,7 @@
 import type { AppProps } from "next/app";
 import { ToggleTheme } from "../components/ToggleTheme";
 import { useEffect, useState } from "react";
-import { utilityGetTheme } from "../utility/utilityGetTheme";
+import { utilityGetTheme } from "../utils/getTheme";
 import { PoweredBy } from "../components/PoweredBy";
 import { ThemeProvider } from "../theme/ThemeProvider";
 
