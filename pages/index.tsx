@@ -69,21 +69,22 @@ const ViewStartuppario: NextPage = () => {
             </SectionContainer>
             <WrapperTitle>
               {jsonData.map((obj) => {
-                if (obj.sez === el)
-                  return (
-                    <Link
-                      title={obj.title}
+                if (obj.sez !== el) return null;
+
+                return (
+                  <Link
+                    title={obj.title}
+                    href={`./${obj.title.replaceAll(" ", "-")}`}
+                    key={`${obj.id}-${obj.title}`}
+                  >
+                    <TitleLink
                       href={`./${obj.title.replaceAll(" ", "-")}`}
-                      key={`${obj.id}-${obj.title}`}
+                      key={obj.id}
                     >
-                      <TitleLink
-                        href={`./${obj.title.replaceAll(" ", "-")}`}
-                        key={obj.id}
-                      >
-                        {obj.title}
-                      </TitleLink>
-                    </Link>
-                  );
+                      {obj.title}
+                    </TitleLink>
+                  </Link>
+                );
               })}
             </WrapperTitle>
           </div>

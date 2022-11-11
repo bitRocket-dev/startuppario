@@ -19,10 +19,11 @@ const ViewIdStartuppario = () => {
   }, [query.title]);
 
   if (!matchingData) return;
+
   return (
     <>
       <Head>
-        <title>Startuppario {matchingData?.title}</title>
+        <title>Startuppario {matchingData.title}</title>
         <meta
           name="description"
           content="Startuppario: Il vocabolario delle startup"
@@ -30,7 +31,7 @@ const ViewIdStartuppario = () => {
         <link rel="icon" href="/favicon.ico" />
         <meta charSet="utf-8" />
         <script async src="https://cdn.ampproject.org/v0.js"></script>
-        <title>Startuppario: {matchingData?.title}</title>
+        <title>Startuppario: {matchingData.title}</title>
         <meta
           content="Startuppario, il vocabolario delle startup. 
           Impara tutti i termini chiave per fare bella figura e buoni affari nel mondo startup"
@@ -49,8 +50,8 @@ const ViewIdStartuppario = () => {
       </Head>
       <WrapperPage>
         <Container>
-          <ContainerTitle>{matchingData?.title}</ContainerTitle>
-          <Description>{matchingData?.description}</Description>
+          <ContainerTitle>{matchingData.title}</ContainerTitle>
+          <Description>{matchingData.description}</Description>
           <HomeButton title="torna alla home" onClick={() => router.push("/")}>
             Torna alla Home
           </HomeButton>
