@@ -6,16 +6,12 @@ import type {
 } from "next";
 import Head from "next/head";
 import { Navbar } from "../components/Navbar";
-<<<<<<< HEAD
-import jsonData from "../json/startuppario.json";
 import Link from "next/link";
-=======
 import { TList } from "../declaration/general";
-import { utilityGetEnv } from "../utils/getEnv";
->>>>>>> 861641e (fix(general): fixed json api)
+import { BASE_PATH } from "../constants/general";
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const response = await fetch(`${utilityGetEnv()}/api/requestTitleList`);
+  const response = await fetch(`${BASE_PATH}/api/requestTitleList`);
   const titleList = await response.json();
 
   return { props: { titleList } };

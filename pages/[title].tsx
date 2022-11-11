@@ -3,12 +3,11 @@ import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
-
-import { utilityGetEnv } from "../utils/getEnv";
+import { BASE_PATH } from "../constants/general";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { title } = context.query;
-  const response = await fetch(`${utilityGetEnv()}/api/${title}`);
+  const response = await fetch(`${BASE_PATH}/api/${title}`);
   const descriptionList = await response.json();
 
   return { props: { descriptionList } };
