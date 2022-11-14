@@ -3,62 +3,33 @@ import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
-import { BASE_PATH } from "../constants/general";
+import { TWord } from "../declaration/general";
+import apiWordDetail from "./api/apiWordDetail";
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
+export const getServerSideProps: GetServerSideProps<{
+  wordDetail: TWord;
+}> = async (context) => {
   const { title } = context.query;
-  const response = await fetch(`${BASE_PATH}/api/${title}`);
-  const descriptionList = await response.json();
+  const wordDetail = await apiWordDetail(title);
 
-  return { props: { descriptionList } };
+  return { props: { wordDetail } };
 };
 
 const ViewIdStartuppario = ({
-  descriptionList,
+  wordDetail,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-  const [stopLight, setStopLight] = useState(false);
   const router = useRouter();
-  const { query } = useRouter();
 
-  useEffect(() => {
-    if (stopLight) {
-      if (descriptionList === undefined) router.push("/");
-    } else setStopLight(true);
-  }, [query.title]);
-
-  if (!descriptionList) return;
+  if (!wordDetail) return null;
   return (
     <>
       <Head>
-        <title>Startuppario {descriptionList?.title}</title>
-        <meta
-          name="description"
-          content="Startuppario: Il vocabolario delle startup"
-        />
-        <link rel="icon" href="/favicon.ico" />
-        <meta charSet="utf-8" />
-        <script async src="https://cdn.ampproject.org/v0.js"></script>
-        <title>Startuppario: {descriptionList?.title}</title>
-        <meta
-          content="Startuppario, il vocabolario delle startup. 
-          Impara tutti i termini chiave per fare bella figura e buoni affari nel mondo startup"
-          name="description"
-        />
-        <link rel="icon" href="favicon.ico" />
-        <link
-          rel="canonical"
-          href="http://example.ampproject.org/article-metadata.html"
-        />
-
-        <link
-          href="https://fonts.googleapis.com/css?family=Roboto:300,900"
-          rel="stylesheet"
-        />
+        <title>Startuppario: {wordDetail.title}</title>
       </Head>
       <WrapperPage>
         <Container>
-          <ContainerTitle>{descriptionList?.title}</ContainerTitle>
-          <Description>{descriptionList?.description}</Description>
+          <Title>{wordDetail.title}</Title>
+          <Description>{wordDetail.description}</Description>
           <HomeButton title="torna alla home" onClick={() => router.push("/")}>
             Torna alla Home
           </HomeButton>
@@ -68,7 +39,7 @@ const ViewIdStartuppario = ({
   );
 };
 
-const ContainerTitle = styled.h2({
+const Title = styled.h2({
   margin: "0",
 });
 

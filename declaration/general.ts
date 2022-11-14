@@ -1,4 +1,4 @@
-export interface TList {
+export interface TWord {
   id: number;
   sez: string;
   title: string;
