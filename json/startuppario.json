@@ -438,7 +438,7 @@
     "description": "Sono gli indicatori, economici e non, in grado di definire lo stato di salute di una startup. Si va dal numero di utenti al fatturato, dal traffico del sito all’engagement. Ogni settore ha i suoi ma, alla fine, è difficile a prescindere dalla capacità di produrre utili."
   },
   {
-    "id": 1,
+    "id": 100,
     "sez": "M",
     "title": "Milestone",
     "description": "Momenti di verifica del percorso di sviluppo di una startup, legati al raggiungimento di obiettivi economici e di mercato."
@@ -553,12 +553,6 @@
   },
   {
     "id": 92,
-    "sez": "S",
-    "title": "SaaS",
-    "description": "Software as a Service. Il modello di distribuzione del software oggi più diffuso, reso possibile dal cloud, che prevede che una certa applicazione venga messa a disposizione del cliente via Internet e venduta come abbonamento. E’ sviluppato soprattutto per il B2B."
-  },
-  {
-    "id": 93,
     "sez": "S",
     "title": "SaaS",
     "description": "Software as a Service. Il modello di distribuzione del software oggi più diffuso, reso possibile dal cloud, che prevede che una certa applicazione venga messa a disposizione del cliente via Internet e venduta come abbonamento. E’ sviluppato soprattutto per il B2B."

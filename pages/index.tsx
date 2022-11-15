@@ -35,23 +35,23 @@ const ViewStartuppario = ({
               </WrapperSection>
             </SectionContainer>
             <WrapperTitle>
-              {wordList.map((word) => {
-                if (word.sez !== letter) return null;
-                return (
-                  <Link
-                    title={word.title}
-                    href={`./${word.title.replaceAll(" ", "-")}`}
-                    key={`${word.id}-${word.title}`}
-                  >
-                    <TitleLink
-                      href={`./${word.title.replaceAll(" ", "-")}`}
-                      key={word.id}
+              {wordList &&
+                wordList.map((word: TWord) => {
+                  if (word.sez !== letter) return null;
+
+                  const formattedTitle = word.title.replace(/\s/g, "-");
+                  return (
+                    <Link
+                      title={word.title}
+                      href={`./${formattedTitle}`}
+                      key={`${word.id}-${word.title}`}
                     >
-                      {word.title}
-                    </TitleLink>
-                  </Link>
-                );
-              })}
+                      <TitleLink href={`./${formattedTitle}`} key={word.id}>
+                        {word.title}
+                      </TitleLink>
+                    </Link>
+                  );
+                })}
             </WrapperTitle>
           </div>
         ))}
