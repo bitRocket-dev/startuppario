@@ -41,17 +41,25 @@ const ViewIdStartuppario = ({
 
 const Title = styled.h2({
   margin: "0",
+  "@media only screen and (max-width:480px)": {
+    fontSize: "20px",
+  },
+  "@media only screen and (max-width:768px) and (min-width:481px)": {
+    fontSize: "30px",
+  },
 });
 
 const WrapperPage = styled.div({
   padding: "20px",
-  width: "100%",
   height: "100vh",
   overflow: "hidden",
   display: "flex",
   flexDirection: "column",
   justifyContent: "space-around",
   alignItems: "center",
+  "@media only screen and (max-width:480px)": {
+    justifyContent: "flex-start",
+  },
 });
 
 const Container = styled.div({
@@ -63,6 +71,9 @@ const Container = styled.div({
   textAlign: "center",
   fontSize: "32px",
   width: "50%",
+  "@media only screen and (max-width:480px)": {
+    justifyContent: "start",
+  },
 });
 
 const Description = styled.p({
@@ -71,6 +82,16 @@ const Description = styled.p({
   fontWeight: "bold",
   lineHeight: "32px",
   margin: "50px 0",
+  "@media only screen and (max-width:480px)": {
+    fontSize: "13px",
+    margin: "30px 0",
+    lineHeight: "25px",
+  },
+  "@media only screen and (max-width:768px) and (min-width:481px)": {
+    fontSize: "20px",
+    margin: "35px 0",
+    lineHeight: "30px",
+  },
 });
 
 const HomeButton = styled.button(({ theme }) => ({
