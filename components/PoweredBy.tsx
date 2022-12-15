@@ -30,15 +30,7 @@ const Container = styled.div(({ theme }) => ({
   right: "32px",
   backgroundColor: theme.background,
   boxShadow: theme.field.boxShadow,
-  "@media only screen and (max-width:480px)": {
-    bottom: "5px",
-    right: "5px",
-  },
-  "@media only screen and (max-width:768px) and (min-width:481px)": {
-    bottom: "5px",
-    right: "5px",
-  },
-  "@media only screen and (max-width:1024px) and (min-width:768px)": {
+  "@media only screen and (max-width:1024)": {
     bottom: "5px",
     right: "5px",
   },

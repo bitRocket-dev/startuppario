@@ -40,7 +40,6 @@ const Wrapper = styled.div(({ theme }) => ({
   top: 0,
   position: "sticky",
   backgroundColor: theme.navbar.background,
-  width: "auto",
   height: "200px",
   display: "flex",
   flexDirection: "column",
@@ -60,7 +59,7 @@ const Wrapper = styled.div(({ theme }) => ({
     padding: "10px 20px 20px 20px",
   },
   "@media only screen and (max-width:1024px) and (min-width:769px)": {
-    height: "210px",
+    height: "225px",
     justifyContent: "start",
     padding: "15px 20px 20px 20px",
   },
